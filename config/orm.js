@@ -34,7 +34,7 @@ function objToSql(ob) {
   return arr.toString();
 }
 
-// Main ORM function
+// Main ORM function - Selected names will describe each objects functionality
 var orm = {
   selectAll: function (table, cb) {
     var query = "SELECT * FROM " + table + ";";

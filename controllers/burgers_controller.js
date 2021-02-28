@@ -3,7 +3,7 @@ var express = require("express");
 var router = express.Router();
 // IMPORTING BURGER MODEL TO USE ITS FUNCTIONS
 var burger = require("../models/burger.js");
-
+// GET route to show all the burgers in the database
 router.get("/", function (req, res) {
   burger.selectAll((data) => {
     var handleBarObj = {
@@ -12,7 +12,7 @@ router.get("/", function (req, res) {
     res.render("index", handleBarObj);
   });
 });
-
+// POST route when adding a new burger to the database
 router.post("/api/burgers", function (req, res) {
   burger.insertOne(
     ["burger_name", "devoured"],
@@ -22,7 +22,7 @@ router.post("/api/burgers", function (req, res) {
     }
   );
 });
-
+// PUT route to update a burgers condition in the database to devoured or NOT devoured
 router.put("/api/burgers/:id", function (req, res) {
   var condition = "id = " + req.params.id;
 
@@ -43,7 +43,7 @@ router.put("/api/burgers/:id", function (req, res) {
     }
   );
 });
-
+// DELETE route to remove a burger entirely from the database
 router.delete("/api/burgers/:id", function (req, res) {
   var condition = "id = " + req.params.id;
 
