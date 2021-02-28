@@ -54,7 +54,7 @@ var orm = {
     query += "VALUES (";
     query += printQuestionMarks(vals.length);
     query += ") ";
-    connection.query(query, function (err, result) {
+    connection.query(query, vals, function (err, result) {
       if (err) {
         throw err;
       }
